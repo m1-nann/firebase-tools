@@ -23,71 +23,71 @@ describe("functionsDeployHelper", function() {
 
   describe("getReleaseNames", function() {
     it("should handle function update", function() {
-      var uploadNames = ["projects/myProject/locations/us-central1/functions/myFunc"];
-      var existingNames = ["projects/myProject/locations/us-central1/functions/myFunc"];
+      var uploadNames = ["projects/myProject/locations/asia-northeast1/functions/myFunc"];
+      var existingNames = ["projects/myProject/locations/asia-northeast1/functions/myFunc"];
       var filter = [["myFunc"]];
 
       expect(helper.getReleaseNames(uploadNames, existingNames, filter)).to.deep.equal([
-        "projects/myProject/locations/us-central1/functions/myFunc",
+        "projects/myProject/locations/asia-northeast1/functions/myFunc",
       ]);
     });
 
     it("should handle function deletion", function() {
       var uploadNames = [];
-      var existingNames = ["projects/myProject/locations/us-central1/functions/myFunc"];
+      var existingNames = ["projects/myProject/locations/asia-northeast1/functions/myFunc"];
       var filter = [["myFunc"]];
 
       expect(helper.getReleaseNames(uploadNames, existingNames, filter)).to.deep.equal([
-        "projects/myProject/locations/us-central1/functions/myFunc",
+        "projects/myProject/locations/asia-northeast1/functions/myFunc",
       ]);
     });
 
     it("should handle function creation", function() {
-      var uploadNames = ["projects/myProject/locations/us-central1/functions/myFunc"];
+      var uploadNames = ["projects/myProject/locations/asia-northeast1/functions/myFunc"];
       var existingNames = [];
       var filter = [["myFunc"]];
 
       expect(helper.getReleaseNames(uploadNames, existingNames, filter)).to.deep.equal([
-        "projects/myProject/locations/us-central1/functions/myFunc",
+        "projects/myProject/locations/asia-northeast1/functions/myFunc",
       ]);
     });
 
     it("should handle existing function not being in filter", function() {
-      var uploadNames = ["projects/myProject/locations/us-central1/functions/myFunc"];
-      var existingNames = ["projects/myProject/locations/us-central1/functions/myFunc2"];
+      var uploadNames = ["projects/myProject/locations/asia-northeast1/functions/myFunc"];
+      var existingNames = ["projects/myProject/locations/asia-northeast1/functions/myFunc2"];
       var filter = [["myFunc"]];
 
       expect(helper.getReleaseNames(uploadNames, existingNames, filter)).to.deep.equal([
-        "projects/myProject/locations/us-central1/functions/myFunc",
+        "projects/myProject/locations/asia-northeast1/functions/myFunc",
       ]);
     });
 
     it("should handle no functions satisfying filter", function() {
-      var uploadNames = ["projects/myProject/locations/us-central1/functions/myFunc2"];
-      var existingNames = ["projects/myProject/locations/us-central1/functions/myFunc3"];
+      var uploadNames = ["projects/myProject/locations/asia-northeast1/functions/myFunc2"];
+      var existingNames = ["projects/myProject/locations/asia-northeast1/functions/myFunc3"];
       var filter = [["myFunc"]];
 
       expect(helper.getReleaseNames(uploadNames, existingNames, filter)).to.deep.equal([]);
     });
 
     it("should handle entire function groups", function() {
-      var uploadNames = ["projects/myProject/locations/us-central1/functions/myGroup-func1"];
-      var existingNames = ["projects/myProject/locations/us-central1/functions/myGroup-func2"];
+      var uploadNames = ["projects/myProject/locations/asia-northeast1/functions/myGroup-func1"];
+      var existingNames = ["projects/myProject/locations/asia-northeast1/functions/myGroup-func2"];
       var filter = [["myGroup"]];
 
       expect(helper.getReleaseNames(uploadNames, existingNames, filter)).to.deep.equal([
-        "projects/myProject/locations/us-central1/functions/myGroup-func1",
-        "projects/myProject/locations/us-central1/functions/myGroup-func2",
+        "projects/myProject/locations/asia-northeast1/functions/myGroup-func1",
+        "projects/myProject/locations/asia-northeast1/functions/myGroup-func2",
       ]);
     });
 
     it("should handle functions within groups", function() {
-      var uploadNames = ["projects/myProject/locations/us-central1/functions/myGroup-func1"];
-      var existingNames = ["projects/myProject/locations/us-central1/functions/myGroup-func2"];
+      var uploadNames = ["projects/myProject/locations/asia-northeast1/functions/myGroup-func1"];
+      var existingNames = ["projects/myProject/locations/asia-northeast1/functions/myGroup-func2"];
       var filter = [["myGroup", "func1"]];
 
       expect(helper.getReleaseNames(uploadNames, existingNames, filter)).to.deep.equal([
-        "projects/myProject/locations/us-central1/functions/myGroup-func1",
+        "projects/myProject/locations/asia-northeast1/functions/myGroup-func1",
       ]);
     });
   });
@@ -105,10 +105,10 @@ describe("functionsDeployHelper", function() {
 
       expect(helper.getFunctionsInfo(triggers, "myProject")).to.deep.equal([
         {
-          name: "projects/myProject/locations/us-central1/functions/myFunc",
+          name: "projects/myProject/locations/asia-northeast1/functions/myFunc",
         },
         {
-          name: "projects/myProject/locations/us-central1/functions/myOtherFunc",
+          name: "projects/myProject/locations/asia-northeast1/functions/myOtherFunc",
         },
       ]);
     });
@@ -129,7 +129,7 @@ describe("functionsDeployHelper", function() {
           name: "projects/myProject/locations/us-east1/functions/myFunc",
         },
         {
-          name: "projects/myProject/locations/us-central1/functions/myOtherFunc",
+          name: "projects/myProject/locations/asia-northeast1/functions/myOtherFunc",
         },
       ]);
     });
